@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css' %}" rel="stylesheet"/>
+<style>
+
+    :root
+    {
+    --bgcolor:linear-gradient(60deg,#7b1fa2,#c2185b);
+    --txtcolor:#7b1fa2;
+    }
+    .t1
+    {
+    font-size:14px;
+    text-align:center;
+    }
+    .bg-mycolor
+    {
+    background:var(--bgcolor) !important;
+    }
+    .txt-mycolor
+    {
+    color:var(--txtcolor);
+    }
+    .fa-brands
+    {
+    border:1px solid white;
+    padding:.4%;
+    border-radius:2px;
+    transition:all 1s;
+    }
+    .fa-brands:hover
+    {
+    transform:rotate(360deg);
+    transition:all 1s;
+    background:white;
+    color:#0099CC;
+    border-radius:2px;
+    }
+    #menu
+    {
+    background:transparent !important;
+    }
+    #menu ul li a
+    {
+    color:white;
+    }
+    .t3
+    {
+    background:#616161;
+    }
+    .ufooter
+    {
+    min-height:300px;
+    }
+    .bfooter
+    {
+    min-height:50px;
+    }
+</style>
+</head>
+<body>
+<script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+<div class="container-fluid">
+    <div class="row t1 bg-mycolor text-light py-1">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+<i class="fa-solid fa-phone"></i> +91 45362362372
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <i class="fa-solid fa-envelope"></i> arpitasingh993692@gmail.com
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            An ISO Certified Software Company
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-telegram"></i>
+        </div>
+    </div>
+    <div class="row t2">
+        <div class="col-sm-10 mx-auto">
+        <div class="row py-3">
+            <div class="col-sm-4 fs-2" style="font-family:Ravie;">
+                Foodie's <b class="txt-mycolor">Fort</b>
+               <i class="fa-solid fa-bag-shopping txt-mycolor"></i>
+
+            </div>
+             <div class="col-sm-3">
+
+             </div>
+             <div class="col-sm-3 text-end">
+                 {% if request.session.user %}
+                 <a href="/user/cartitems/" class="btn btn-sm bg-mycolor text-light">Cart
+                 <i class="fa-solid fa-cart-shopping text-light"></i>
+                  <b class="badge text-bg-light"> {{request.session.cartitems}} </b></a>
+                 <a href="/user/orderslist/" class="btn btn-sm bg-mycolor text-light">My Orders <i class="fa-solid fa-truck"></i>
+                 </a>
+
+                 {% else %}
+
+                 <a href="/user/cartitems/" class="btn bg-mycolor text-dark">Cart
+                 <i class="fa-solid fa-cart-shopping text-light"></i>
+                  <b class="badge text-bg-light"> 0 </b></a>
+
+                 {% endif %}
+
+             </div>
+            <div class="col-sm-2 fs-5">
+
+          {% if request.session.user %}
+
+              <a href="/user/myprofile/" class="ps-5 txt-mycolor" style="text-decoration:none;">
+          {{request.session.username}}
+          <img src="/{{request.session.userpic}}" class="img-thumbnail ms-2" style="max-height:30px; width:30px;"/>
+              </a>
+
+
+          {% else %}
+          <ul>
+              <a href="#" class="nav-link disabled ps-5">
+          Default User
+          <img src="{% static 'images/user.jpeg' %}" class="img-thumbnail ms-2" style="max-height:30px;"/>
+              </a>
+          </ul>
+          {% endif %}
+            </div>
+        </div>
+            </div>
+    </div>
+    <div class="row t3">
+        <div class="col-sm-12 mx-auto">
+
+<!-- start menu-->
+
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" id="menu">
+  <div class="container-fluid">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ps-5">
+          <a class="nav-link active" aria-current="page" href="/user/index/">
+              <i class="fa-solid fa-house pe-1"></i>
+              Home</a>
+        </li>
+        <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/about/">
+              <i class="fa-solid fa-users pe-1"></i>
+              About Us</a>
+        </li>
+                  <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/product/">
+             <i class="fa-solid fa-box-open pe-1"></i>
+              Product</a>
+        </li>
+          <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/mprofile/">
+           <i class="fa-solid fa-user"></i>
+              My Profile</a>
+        </li>
+
+        <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/contact/">
+              <i class="fa-solid fa-headset pe-1"></i>
+              Customer Support</a>
+        </li>
+                  <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/signup/">
+              <i class="fa-solid fa-chevron-up pe-1">
+              </i>
+              Sign Up</a>
+        </li>
+          {% if request.session.user %}
+
+                  <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/signout/">
+             <i class="fa-solid fa-arrow-right-to-bracket pe-1"> </i>
+              Sign Out</a>
+        </li>
+          {% else %}
+                  <li class="nav-item ps-5">
+          <a class="nav-link" href="/user/signin/">
+             <i class="fa-solid fa-arrow-right-to-bracket pe-1"> </i>
+              Sign In</a>
+        </li>
+                {% endif %}
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!-- end menu-->
+        </div>
+    </div>
+<div class="row">
+    <div class="col-sm-12 py-2" style="min-height:500px;">
+{% block content %}
+
+    {% endblock%}
+    </div>
+    </div>
+    <div class="row ufooter bg-dark">
+<div class="col-sm-3 text-light"><br/><br/>
+    <b style="margin:45px; font-size:35px; font-family :Algerian;"class="txt-mycolor"> FOODIE'S FORT </b><br/>
+
+     <div class="ms-3 mt-1" style="text-align:justify;"> Foodie's fort (formerly Grofers), is India’s last minute app. Trusted by millions,
+    it is your everyday online grocery shopping app that home-delivers 5000+ daily
+    groceries in just a blink.
+         Enjoy easy and smooth app experience with quick delivery.</div>
+</div>
+<div class="col-sm-3 text-light"><br/><br/>
+     <b style="margin:45px; font-size:25px;"> COMPANY </b><br/>
+     <span class="m-5">PROJECTS</span><br/>
+     <span class="m-5">ABOUT US</span><br/>
+     <span class="m-5">BLOG</span><br/>
+     <span class="m-5">AWARDS</span><br/>
+     <span class="m-5">CAREERS</span><br/>
+     <span class="m-5">PRESS</span><br/>
+     <span class="m-5">VALUES</span><br/>
+</div>
+<div class="col-sm-3 text-light"><br/><br/>
+    <b style="margin:15px; font-size:25px;"> ADDRESS </b><br/>
+     <span class="m-3"><i class="fa-solid fa-house-chimney"></i> Lucknow, NY 10012,UP</span><br/>
+     <span class="m-3"> <i class="fa-solid fa-envelope"></i> 10minzepto@gmail.com</span><br/>
+     <span class="m-3"><i class="fa-solid fa-phone"></i> + 91 2345667888</span><br/>
+     <span class="m-3"><i class="fa-solid fa-mobile-screen"></i> + 91 536125361</span><br/><br/>
+ <b style="margin:45px; font-size:20px;"> FOLLOW US </b><br/>
+    <i class="fa-brands fa-twitter fs-4 ms-3" style="border:none; background:#059ae6;"></i>
+    <i class="fa-brands fa-youtube ms-2 fs-4" style="border:none;background: #f50100;"></i>
+    <i class="fa-brands fa-square-facebook fs-4 ms-2" style="border:none; background:#22304a"></i>
+    <i class="fa-brands fa-linkedin-in ms-2 fs-4" style="border:none;background:#0f5c9f;"></i>
+    <i class="fa-brands fa-whatsapp ms-2 fs-4" style="border:none;background: #38b426;"></i>
+</div>
+<div class="col-sm-3 text-light "><br/><br/>
+    <iframe  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3749166.399051636!2d86.79192133750001!3d23.41369716170097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1692425119445!5m2!1sen!2sin"
+width="400" height="250" style=" padding-right:100px;" allowfullscreen="" loading="lazy"
+ referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <br/><br/>
+</div>
+</div>
+    </div>
+<div class="row footer bg-dark">
+    <div class="col-sm-12 mb-5 fs-4" style="text-align:center; color:white; m">Register For Free
+        <form action="/user/signup/">
+    <input type="submit" value="SIGN UP" class="ms-2 px-3" style="border:none; font-size:17px; color:white;background:#f44336; font-weight:bold; border-radius:15px;"/>
+        </form>
+    </div>
+    </div>
+    <div class="row bfooter py-3" style="background:#45526e;">
+        <div class="col-sm-6 text-light" style="padding-left:180px;">
+        &copy; Copyright : <a href="https://www.techpile.in" target="_blank" style="text-decoration:none; color:white;"> Techpile Technology Pvt. Ltd.</a>
+            </div>
+          <div class="col-sm-6 text-light" style="padding-left:150px;" >Designed and Developed By : <a href="/user/mprofile/" target="_blank" style="text-decoration:none; color:white;">Er. Arpita Sigh</a></div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    var i=0;
+    var txtc=document.getElementById("txtcard");
+    function funp()
+    {
+    i++;
+    txtc.value=i;
+    }
+    function funm()
+    {
+    if(i>0)
+    {
+    i--
+    txtc.value=i;
+    }
+    }
+</script>
+</body>
+</html>

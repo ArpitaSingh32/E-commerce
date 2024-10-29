@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="fs-2 text-center">
+    Our <b class="txt-mycolor">  Profile <i class="fa-solid fa-user"></i> </b>
+    </div>
+<div class="row">
+        <div class="col-sm-3">
+        <h3 class="txt-mycolor">About Me</h3>
+               <ul>
+                   <li>I am a web developer</li>
+                   <li>I am a junior programmer with best knowledge of front-end techniques</li>
+                   <li>I am doing Diploma in Computer Science & Engineering</li>
+                   <li>And this is my first dynamic website.</li>
+               </ul>
+    </div>
+    <div class="col-sm-6 my-4">
+        <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'images/myphoto.jpg' %}" height=430px width=430px class="img-fluid rounded-start" alt="..." >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title fs-3 txt-mycolor">ARPITA SINGH </h5>
+          <div class="txt-mycolor fs-5">Daughter of Mr. Vinod Kumar Singh</div>
+          <h4 style="padding-left:150px;">and</h4>
+        <p class="card-text">Student Of Govt. Girls Polytechnic College,Gorakhpur</p>
+        <b class="fs-4">Address</b> <br/> <i class="fa-solid fa-location-dot"></i> Asuran Chowk, Medical Road,Gorakhpur-273013,Uttar Pradesh
+          <br/><div class="mt-3 ms-5">
+          <a href="https://youtube.com/@arpitasingh5913?si=5Y9INSimd4gD8QbY"><i class="fa-brands fa-youtube ms-2 fs-5 p-1 text-light" style="border:none;background: #f50100;"></i></a>
+   <a href="https://www.linkedin.com/in/arpita-singh-934a1b273"> <i class="fa-brands fa-linkedin-in ms-2 p-1 fs-5 text-light" style="border:none;background:#0f5c9f;"></i></a>
+    <a href="https://instagram.com/pastelpoet8491?igshid=OGQ5ZDc2ODk2ZA=="><i class="fa-brands fa-instagram ms-2 fs-5 p-1 text-light " style="border:none;background:#d20782;"></i></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="col-sm-3">
+<h2 class="txt-mycolor">Details</h2>
+                <ul style="list-style:none;">
+                    <li class="py-2">
+                        <span >
+                           <b class="txt-mycolor">Name:</b> Arpita Singh
+                        </span>
+                    </li>
+                     <li class="py-2">
+                        <span >
+                            <b class="txt-mycolor">Age:</b>20
+                        </span>
+                    </li>
+                    <li class="py-2">
+                        <span >
+                           <b class="txt-mycolor">Location:</b> Techpile Technology Pvt Ltd Vikas Nagar sector-2 Lucknow
+                        </span>
+                    </li>
+
+                </ul>
+    </div>
+</div>
+{% endblock %}

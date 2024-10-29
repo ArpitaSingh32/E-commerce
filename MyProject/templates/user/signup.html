@@ -1,0 +1,60 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<style>
+    .form-control
+    {
+    height:50px;
+    margin-bottom:.8%;
+    }
+    .bottom-left
+    {
+    position:absolute;
+    left:0;
+    right:0;
+    }
+</style>
+<div class="text-center fs-1">
+    Sign <b class="txt-mycolor "> Up <i class="fa-solid fa-chevron-up pe-1"> </i></b>
+</div>
+<div class="row">
+    <div class="col-sm-10 mx-auto mt-3">
+        <div class="row mx-auto" >
+            <div class="col-sm-5 m-0" style="background:#b2dfdb; border-radius:10px;">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <b>Name</b> <input type="text" required name="name" placeholder="Name..." class="form-control"/>
+                     <b>Email</b><input type="email" required name="email" placeholder="Email..." class="form-control"/>
+                     <b>Mobile</b><input type="number" required name="mobile" placeholder="Mobile..." class="form-control"/>
+                     <b>Password</b><input type="password" required name="passwd" placeholder="Password..." class="form-control"/>
+                     <b>Profile Picture</b><input type="file" required name="fu" placeholder="Password..." class="form-control"/>
+                    <b>Address</b> <textarea class="form-control" required name="address" placeholder="Address..."></textarea>
+                    <input type="submit" value="Save" class="btn bg-mycolor mt-2"/>
+                </form>
+            </div>
+            <div class="col-sm-5 bg-mycolor" style="border-radius:10px;">
+<i class="fa-solid fa-basket-shopping text-light" style="padding-top:50px; padding-left:200px; font-size:80px;"></i><br/>
+                <h4 class="text-light fs-4" style="padding-left:40px; padding-top:10px; text-align:center;"> A whole grocery store at your fingertips...</h4>
+<div class="card bg-mycolor text-white" style="border:none;">
+  <img src="{% static 'images/v2.jpg'%}" style="opacity:.5; padding:20px;" class="card-img " alt="Stony Beach"/>
+  <div class="card-img-overlay p-5">
+    <p class="card-text my-4 mx-3" style="border:2px solid white; border-radius:6px; padding:40px;">
+        <span class="fs-5"> Welcome to <br/></span>
+      <span class="fs-4" style="font-weight:bold;"> GROCERY STORE</span><br/>
+        We serve only the fresh ingredients!
+
+    </p>
+  </div>
+</div>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

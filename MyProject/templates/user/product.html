@@ -1,0 +1,77 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<div class="text-center fs-2">
+    Product <b class="txt-mycolor"> <i class="fa-solid fa-box-open pe-1"></i></b>
+</div>
+<div class="row">
+<div class="col-sm-3">
+<div class="row list">
+<!--start list-->
+    <ul class="list-group">
+  <li class="list-group-item bg-mycolor text-light" aria-current="true">Subcategory</li>
+        {% for i in subcat %}
+        <a href="/user/product?sid={{i.id}}" style="text-decoration:none;"><li class="list-group-item">{{i.subcategory_name}}</li></a>
+        {% endfor %}
+</ul>
+
+<!--end list-->
+    </div>
+
+</div>
+    <div class="col-sm-9">
+        <div class="row">
+         {% for x in pdata %}
+        <div class="col-lg-2 col-md-3 col-sm-12 py-3 my-2" style="border-right:2px solid grey; border-radius:10px; background:#f3e5f5;" >
+
+            <!--start product-->
+            <div class="card mt-2">
+  <img src="/{{x.product_pic}}" class="card-img-top" alt="...">
+  <div class="card-body">
+      <b> {{x.product_subcategory}}</b><br/>
+      {{x.product_quantity}} || <i class="fa-solid fa-indian-rupee-sign"></i>
+      <s>{{x.price}}</s> <b>{{x.discount_price}}</b>
+      <form method="get" action="/user/mycart/">
+      <div class="input-group">
+          <b class="input-group-text" onclick="funm{{x.id}}()">
+              <i class="fa-solid fa-minus"></i></b>
+          <input type="hidden" name="pname" value="{{x.product_subcategory}}"/>
+          <input type="hidden" name="price" value="{{x.price}}"/>
+          <input type="hidden" name="ppic" value="{{x.product_pic}}"/>
+          <input type="hidden" name="pw" value="{{x.product_quantity}}"/>
+          <input type="text" name="qt" value="0" id="txtcard{{x.id}}"  class="form-control fs-5 text-center"/>
+          <b class="input-group-text" onclick="funp{{x.id}}()">
+              <i class="fa-solid fa-plus" ></i>
+          </b>
+      </div>
+<input type="submit" value="Add To Cart" class="btn bg-mycolor text-light mt-1">
+      </form>
+  </div>
+</div>
+            <!--end product-->
+        </div>
+            <script>
+                 var i{{x.id}}=0;
+                 var txtc{{x.id}}=document.getElementById("txtcard{{x.id}}");
+                 function funp{{x.id}}()
+                 {
+                 i{{x.id}}++;
+                 txtc{{x.id}}.value=i{{x.id}};
+                 }
+                 function funm{{x.id}}()
+                 {
+                  if(i{{x.id}}>0)
+                  {
+                  i{{x.id}}--
+                 txtc{{x.id}}.value=i{{x.id}};
+                   }
+               }
+            </script>
+{% endfor  %}
+</div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

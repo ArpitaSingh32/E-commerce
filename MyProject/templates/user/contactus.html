@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<div class="text-center fs-1">
+    Customer <b class="txt-mycolor">  Support <i class="fa-solid fa-headset pe-1"></i></b>
+</div>
+   		<div class="row py-5">
+				<div class="col-sm-2"></div>
+   			<div class="col-sm-5 ">
+   				<div class="row">
+   					<div class="col-sm-12">
+						<form method="post">
+							{% csrf_token %}
+   						<div class="input-group mb-4">
+   							<i class=" text-input-group fa-solid fa-user bg-mycolor p-3 "></i>
+   							<input type="text" name="name" placeholder="Enter your name...." class=" contact-input form-control">
+   						</div>
+   						<div class="input-group mb-4 ">
+   							<i class=" text-input-group fa-solid fa-envelope bg-mycolor p-3"></i>
+   							<input type="email" name="email" placeholder="Enter your email...."class=" contact-input form-control">
+   						</div>
+   						<div class="input-group mb-4">
+   							<i class=" text-input-group fa-solid fa-phone bg-mycolor p-3"></i>
+   							<input type="number" name="mobile" placeholder="Enter your number...." class=" contact-input form-control">
+   						</div>
+   						<div class="input-group mb-4">
+   							<i class=" text-input-group fa-solid fa-message bg-mycolor p-3 pt-4"></i>
+							<textarea name="message" placeholder="Enter your message...." style="resize:none;" class="contact-input form-control" ></textarea>
+
+   				        </div>
+   				        <div>
+   				        	<input type="submit" value="SUBMIT" class="bg-mycolor form-control p-2 " style="font-weight:bold;color:white;" >
+   				        </div>
+</form>
+   					</div>
+   				</div>
+
+   			</div>
+   			<div class="col-sm-3 border border-dark">
+                <h3>Contact <span class="txt-mycolor"><b>info</b></span></h3>
+   				<hr style="width:150px; height:5px; background-color: #000000;">
+   				<span><i class="fa-solid fa-location-dot fs-4 me-2"></i><h4 style="display: inline-block;"> Office address</h4></span>
+   				<p>Medical Road, Asuran Chowk,<br/>
+					Gorakhpur, Uttar Pradesh
+
+                </p>
+   				<span><i class="fa-solid fa-phone fs-4 me-2"></i><h4 style="display: inline-block;">Call us </h4> </span>
+   				<p>+91 8433842485
+                </p>
+   				<span><i class="fa-solid fa-envelope fs-4 me-2"></i><h4 style="display: inline-block;">Mail us</h4></span>
+   				<p>arpitasingh993692@gmail.com</p>
+   			</div>
+
+   			<div class="col-sm-2"></div>
+   		</div>
+
+{% endblock%}

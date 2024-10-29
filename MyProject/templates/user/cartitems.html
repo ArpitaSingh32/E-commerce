@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="text-center fs-2"> Our Cart<b class="txt-mycolor"> Item  <i class="fa-solid fa-cart-shopping"></i> </b> </div>
+{% if not request.session.user %}
+<script>
+    alert("You have to login first!....")
+    location.href="/user/signin/"
+</script>
+{% endif %}
+<div class="row">
+    <div class="col-sm-8 mx-auto">
+        {% for i in cartdata %}
+<!--start cart item-->
+        <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-2 p-2">
+      <img src="/{{i.product_picture}}" height="280px" width="150px" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-10">
+      <div class="card-body">
+        <table class="table table-hover">
+            <tr>
+                <th>Cart Id</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th>Added Date</th>
+                <th>Cancel</th>
+            </tr>
+            <tr>
+                <td>Zepto10{{i.id}}</td>
+                <td>
+                   <b>{{i.product_name}}</b><br/>
+                    <small class="text-center">{{i.pw}}</small>
+
+                </td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.total_price}}</td>
+                <td>{{i.added_date}}</td>
+                <td><a href="/user/cartitems?cid={{i.id}}" class="btn btn-danger btn-sm">Remove <i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end cart item-->
+        {% endfor %}
+        <a href="/user/order?msg=1" class="btn btn-danger">CHECKOUT ALL <i class="fa-solid fa-check"></i> </a>
+    </div>
+</div>
+{% endblock%}

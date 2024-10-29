@@ -1,0 +1,48 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+<style>
+    .formcontrol
+    {
+    height:50px;
+    }
+    .bg
+    {
+    border:6px solid #80deea;
+    }
+</style>
+<div class="text-center fs-1">
+     Sign  <b class="txt-mycolor"> In <i class="fa-solid fa-arrow-right-to-bracket pe-1"> </i></b>
+</div>
+
+<div class="row">
+    <div class="col-sm-5 mx-auto p-5 bg-mycolor bg" style="border-radius:10px;">
+        <form method="post">
+            {% csrf_token %}
+        <div class="input-group my-2">
+            <i class="input-group-text bg-mycolor text-light ps-3" style="width:50px;">
+                <i class="fa-solid fa-user"></i>
+            </i>
+            <input type="email" name="email" required placeholder="Username..." class="form-control"/>
+        </div>
+            <div class="input-group my-3">
+            <i class="input-group-text bg-mycolor text-light ps-3 " style="width:50px;text-align:center;">
+              <i class="fa-solid fa-key"></i>
+            </i>
+            <input type="password" name="passwd" required placeholder="Password..." class="form-control"/>
+            </div>
+             <input type="checkbox" class="me-2"/> Remember me <br/>
+            <input type="submit" value="Login"
+                   style="height:40px; font-weight:bold; width:70px; border-radius:3px; border:none;"
+                   class="bg-danger my-2 px-3 text-light "/>
+        </form>
+    </div>
+</div>
+<div class="col-sm-3 mx-auto my-3" style="font-weight:bold; font-size:25px;">
+Or Login With
+     <i class="fa-brands fa-twitter fs-3 ms-3 text-light" style="border:none; background:#059ae6;"></i>
+    <i class="fa-brands fa-square-facebook ms-1 fs-2" style="border:none; color:#303f9f; background:white;"></i>
+    <i class="fa-brands fa-square-google-plus ms-1" style=" font-size:34px; border:none; color:#f44336;"></i>
+    </div>
+{% endblock%}
